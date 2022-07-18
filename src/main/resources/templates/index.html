@@ -1,103 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Shangshaptak</title>
-	<link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="device-width,initial-scale=1.0">
 
-	<link href="https://fonts.maateen.me/siyam-rupali/font.css" rel="stylesheet">
-	<link href="https://fonts.maateen.me/charukola-ultra-light/font.css" rel="stylesheet">
-	<link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
-	<link href="https://fonts.maateen.me/charu-chandan-hard-stroke/font.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
+	<title>xplorebd</title>
+
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
 	<!--font-family: 'Catamaran', sans-serif;-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-	<meta name="viewport" content="device-width,initial-scale=1.0">
-	<meta charset="utf-8">
-	<title>xplorebd</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 </head>
-<body class=".container .parent">
+<body class=".parent">
 
-	<header class="header">
+<!--========== Header ===========-->
+	<div th:replace="../fragments/navbar">This content will be gone</div>
 
-		<div class="topheader">
-			<h2><span class="s1">EXPLORE</span> <span class="s2">BANGLADESH</span></h2>
-		</div>
-
-		<nav class="menubar">
-			<ul>
-				<li><a href="#">Home</a></li>
-
-				<li><a href="#">Places<i class="down-arrow"></i>
-					<ul>
-						<li><a href="#">Cox's Bazar</a></li>
-						<li><a href="#">Bandarban</a></li>
-						<li><a href="#">Rangamati</a></li>
-						<li><a href="#">Sylhet</a></li>
-						<li><a href="#">Sundarban</a></li>
-					</ul>
-					</a>
-				</li>
-
-				<li><a href="#">Upcoming Tours<i class="down-arrow"></i>
-					<ul>
-						<li>
-							<a href="#">August<i class="right-arrow"></i></a>
-						</li>
-						<li><a href="#">Septmber<i class="right-arrow"></i></a>
-						</li>
-					</ul>
-					</a>
-				</li>
-
-				<li><a href="#">Custom Tours<i class="down-arrow"></i>
-					<ul>
-						<li><a href="#">Solo Tour<i class="right-arrow"></i></a></li>
-						<li><a href="#">Couple Tour</a></li>
-						<li><a href="#">FnF Tour</a></li>
-						<li><a href="#">Corporate Tour</a></li>
-					</ul>
-					</a>
-				</li>
-
-				<li><a href="#">Tour Library</a></li>
-
-				<li><a href="#">Adventure School<i class="down-arrow"></i>
-					<ul>
-						<li><a href="#">Running</a></li>
-						<li><a href="#">Cycling</a></li>
-						<li><a href="#">Hiking</a></li>
-						<li><a href="#">Climbing</a></li>
-						<li><a href="#">Sailing</a></li>
-						<li><a href="#">Swimming</a></li>
-						<li><a href="#">Mountaineering</a></li>
-					</ul>
-					</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-
-
-<!--==========Main Body===========-->
+<!--========== Main Body ===========-->
 
 <main class="main">
 	<section class="main-section">
-
+		
 		<section class="block-1">
 			<div class="block-1-title">
 				<h4><span>Featured</span></h4>
 			</div>
-
+			
 			<div class="block-1a">
 				<div class="block-1a-content">
 					<img src="../images/monsoon.jpg" th:src="@{images/monsoon.jpg}">
 				</div>
 				<div class="block-1a-headline">
-					<h3>Trekking in Bandarban</h3>
+					<h3>Trekking in Ruma and Thanchi, Bandarban, Sept 21-24</h3>
 				</div>
 			</div>
 			<div class="block-1b">
@@ -105,7 +41,7 @@
 					<img src="../images/bogalake.jpg" th:src="@{images/bogalake.jpg}">
 				</div>
 				<div class="block-1b-headline">
-					<p>Hiking Bogalake</p>
+					<p>Hiking Bogalake, Bandarban, October 12-14</p>
 				</div>
 			</div>
 			<div class="block-1c">
@@ -113,25 +49,25 @@
 					<img src="../images/kaptai-1.jpg"  th:src="@{images/kaptai-1.jpg}">
 				</div>
 				<div class="block-1c-headline">
-					<p>Kaptai Boat Trip</p>
+					<p>Boat Trip in Kaptai Lake, Rangamati. August 05-07</p>
 				</div>
 			</div>
-
+			
 			<div class="block-1d">
 				<div class="block-1d-content">
 					<img src="../images/tlabongbypiash.jpg" th:src="@{images/tlabongbypiash.jpg}">
 				</div>
 				<div class="block-1d-headline">
-					<p>Exploring Tlabong</p>
+					<p>Exploring Tlabong Waterfall, Ruma, Bandarban. July 24-28</p>
 				</div>
-
+				
 			</div>
 			<div class="block-1e">
 				<div class="block-1e-content">
 					<img src="../images/sundarban.jpg" th:src="@{images/sundarban.jpg}">
 				</div>
 				<div class="block-1e-headline">
-					<p>Sundarban Safari</p>
+					<p>Sundarban Safari, Bagerhat, November 08-12</p>
 				</div>
 			</div>
 			<div class="block-1f">
@@ -139,23 +75,23 @@
 					<img src="../images/teknaf.jpeg" th:src="@{images/teknaf.jpg}">
 				</div>
 				<div class="block-1f-headline">
-					<p>Teknaf Beach Hiking</p>
+					<p>Teknaf Beach Hiking, Cox's Bazar, July 18-22</p>
 				</div>
 			</div>
-
-
+			
+			
 		</section>
 
-		<section class="block-2 mb-5">
+		<section class="block-2">
 			<div class="block-2-title">
 				<h4><span>Tour List</span></h4>
 			</div>
 			<div class="">
-				<table class="table table-striped table-bordered table-hover">
-				  <thead class="table-dark">
-					<tr>
-					  <th>Id</th>
-					  <th>Title</th>
+				<table class="shadow-sm table table-striped table-bordered table-hover">
+					<thead class="table-dark">
+						<tr>
+							<th>Id</th>
+							<th>Title</th>
 					  <th>Description</th>
 					  <th>Start Date</th>
 					  <th>End Date</th>
@@ -163,22 +99,22 @@
 					  <th>Cost</th>
 					  <th>Options</th>
 					</tr>
-				  </thead>
-				  <tbody>
+				</thead>
+				<tbody>
 					<tr th:each="tour: ${tours}">
-					  <td th:text="${tour.id}"></td>
-					  <td th:text="${tour.title}"></td>
-					  <td th:text="${tour.description}"></td>
-					  <td th:text="${tour.startDate}"></td>
-					  <td th:text="${tour.endDate}"></td>
-					  <td th:text="${tour.capacity}"></td>
-					  <td th:text="${tour.cost}"></td>
-					  <td>
-						  <a class="btn btn-sm btn-danger d-inline">Book</a>
-						  <a class="btn btn-sm btn-info d-inline">Follow</a>
-					  </td>
+						<td th:text="${tour.id}"></td>
+						<td th:text="${tour.title}"></td>
+						<td th:text="${tour.description}"></td>
+						<td th:text="${tour.startDate}"></td>
+						<td th:text="${tour.endDate}"></td>
+						<td th:text="${tour.capacity}"></td>
+						<td th:text="${tour.cost}"></td>
+						<td>
+							<a class="btn btn-sm btn-danger d-inline">Book</a>
+							<a class="btn btn-sm btn-info d-inline">Follow</a>
+						</td>
 					</tr>
-				  </tbody>
+				</tbody>
 				</table>
 			</div>
 		  
@@ -187,30 +123,10 @@
 
 </main>
 
-
-<footer class="footer">
-	<ul class="about">
-		<li class="footer-title"><a>About Us</a></li>
-		<li><a>Contact</a></li>
-		<li><a>Mobile</a></li>
-		<li><a>Email</a></li>
-	</ul>
-	<ul class="legal">
-		<li class="footer-title"><a>Legal</a></li>
-		<li><a>Privacy Policy</a></li>
-		<li><a>Terms and Conditions</a></li>
-		<li><a>License</a></li>
-	</ul>
-	<ul class="social">
-		<li class="footer-title"><a>Social</a></li>
-		<li><a class="fa fa-facebook-f fa-2x"></a></li>
-		<li><a class="fa fa-youtube fa-2x"></a></li>
-		<li><a class="fa fa-instagram fa-2x"></a></li>
-	</ul>
-	<p class="copyright"><span>&copy; 2022 Explore Bangladesh.</span></p>
-</footer>
+<!--========== Footer ===========-->
+<div th:replace="../fragments/footer">This content will be gone</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
- 
+
 
 </body>
