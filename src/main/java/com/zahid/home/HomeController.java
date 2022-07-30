@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.zahid.place.PlaceService;
 import com.zahid.tour.TourService;
 
 @Controller
@@ -17,6 +18,9 @@ public class HomeController {
     
     @Autowired
     TourService tourService;
+
+    @Autowired
+    PlaceService placeService;
     
     @GetMapping("/") 
     public ModelAndView home() {
@@ -31,9 +35,19 @@ public class HomeController {
     @GetMapping("/tours/list") 
     public ModelAndView index() {
         logger.debug("request to GET list");
-        ModelAndView modelAndView = new ModelAndView("list");
+        ModelAndView modelAndView = new ModelAndView("tour_list");
         
         modelAndView.addObject("tours", tourService.getAllTours());
+        
+        return modelAndView;
+    }
+        
+    @GetMapping("/places/list") 
+    public ModelAndView places() {
+        logger.debug("request to GET list");
+        ModelAndView modelAndView = new ModelAndView("place_list");
+        
+        modelAndView.addObject("places", placeService.getAllPlaces());
         
         return modelAndView;
     }

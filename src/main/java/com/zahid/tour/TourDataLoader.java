@@ -20,6 +20,9 @@ public class TourDataLoader implements CommandLineRunner {
     }
 
 	private void loadSeedData() {
+
+        logger.info("Getting seeded data for Tour model");
+
         if(tourRepository.count() == 0) {
             Tour t1 = new Tour("Cox's Bazar", "Cox's Bazar Tour", "2022-07-24", "2022-07-24", 12, 5500.0);
             Tour t2 = new Tour("Bandarban", "Bandarban Tour", "2022-07-25", "2022-07-25", 8, 4500.0);

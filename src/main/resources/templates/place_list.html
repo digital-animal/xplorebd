@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>xplorebd</title>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div th:replace="../fragments/navbar">This content will be gone</div>
+
+
+    <div class="container">
+
+      <!-- card begins -->
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        
+        <div th:each="place: ${places}">
+
+          <div class="col">
+            <div class="card">
+              <img src="https://images.fineartamerica.com/images-medium-large-5/inani-beach-noor-a-kadir-rana.jpg" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+              
+              <div class="card-body">
+                <h5 class="card-title" th:text="${place.name}">Card title</h5>
+                <p class="card-text" th:text="${place.type}">
+                  This is a longer card with supporting text below as a natural lead-in to
+                  additional content. This content is a little bit longer.
+                </p>
+                <p class="card-text" ></p>
+              </div>
+
+              <div class="card-footer">
+                <small class="text-muted" th:text="${place.location}">Last updated 3 mins ago</small>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- card ends -->
+
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
