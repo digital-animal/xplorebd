@@ -23,3 +23,12 @@
 ## preview project on browser by pasting the following url
 
     localhost:8080
+
+## working http urls
+
+    localhost:8080/tours
+    localhost:8080/tours/list
+    localhost:8080/tours/id
+    localhost:8080/places/
+    localhost:8080/places/list
+    localhost:8080/places/id
