@@ -32,3 +32,7 @@
     localhost:8080/places/
     localhost:8080/places/list
     localhost:8080/places/id
+    localhost:8080/login
+    localhost:8080/logout
+    localhost:8080/user
+    localhost:8080/admin
