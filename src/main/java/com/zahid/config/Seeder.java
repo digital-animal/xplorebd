@@ -1,6 +1,8 @@
 package com.zahid.config;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +11,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.zahid.models.Account;
+import com.zahid.models.Role;
 import com.zahid.services.AccountService;
+import com.zahid.services.RoleService;
 
 @Component
 public class Seeder implements CommandLineRunner {
@@ -17,6 +21,9 @@ public class Seeder implements CommandLineRunner {
     private final Logger logger = LoggerFactory.getLogger(Seeder.class);
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private RoleService roleService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -28,12 +35,31 @@ public class Seeder implements CommandLineRunner {
         List<Account> accounts = accountService.getAllAccounts();
         
         if(accounts.size() == 0) {
-            Account account1 = new Account("testuser1@email.com ", "1234", "John", "Doe");
-            Account account2 = new Account("testuser2@email.com ", "1234", "Alex", "Lee");
-            Account account3 = new Account("testuser3@email.com ", "1234", "Lee", "Cooper");
-            Account account4 = new Account("testuser4@email.com ", "1234", "Jane", "Doe");
-            Account account5 = new Account("testuser5@email.com ", "1234", "Robert", "Dew");
+
+            Role user = new Role("ROLE_USER");
+            Role admin = new Role("ROLE_ADMIN");
+
+            roleService.addRole(user);
+            roleService.addRole(admin);
+
+            Set<Role> minRoles = new HashSet<>();
+            minRoles.add(user);
+            Set<Role> maxRoles = new HashSet<>();
+            maxRoles.add(user);
+            maxRoles.add(admin);
+
+            Account account1 = new Account("alex.lee@email.com", "1234", "Alex", "Lee");
+            Account account2 = new Account("lee.cooper@email.com", "1234", "Lee", "Cooper");
+            Account account3 = new Account("magnus.carlsen@email.com", "1234", "Magnus", "Carlsen");
+            Account account4 = new Account("john.doe@email.com", "1234", "John", "Doe");
+            Account account5 = new Account("anna.smith@email.com", "1234", "Anna", "Smith");
             
+            account1.setRoles(minRoles);
+            account2.setRoles(minRoles);
+            account3.setRoles(maxRoles);
+            account4.setRoles(minRoles);
+            account4.setRoles(maxRoles);
+
             accountService.addAccount(account1);
             accountService.addAccount(account2);
             accountService.addAccount(account3);

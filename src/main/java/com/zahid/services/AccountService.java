@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.zahid.models.Account;
@@ -11,6 +12,9 @@ import com.zahid.repositories.AccountRepository;
 
 @Service
 public class AccountService {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     
     @Autowired
     private AccountRepository accountRepository;
@@ -24,8 +28,9 @@ public class AccountService {
     public Account getAccount(Long id) {
         return accountRepository.findById(id).get();
     }
-
+    
     public void addAccount(Account account) {
+        account.setPassword(passwordEncoder.encode(account.getPassword()));
         accountRepository.save(account);
     }
 
@@ -33,5 +38,10 @@ public class AccountService {
         Account t = accountRepository.findById(account.getId()).get();
         t = account;
         accountRepository.save(t);
+    }
+
+    public Account getAccountByEmail(String email) {
+        Account account = accountRepository.findByEmail(email);
+        return account;
     }
 }

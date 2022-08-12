@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <!--========== head ===========-->
 <div th:replace="../fragments/head">This content will be gone</div>
 
 
 <!--========== Main Body ===========-->
-<body>
+<body class="container parent">
 	<!--========== navbar ===========-->
 	<div th:replace="../fragments/navbar">This content will be gone</div>
 
@@ -99,8 +100,8 @@
 							<td th:text="${tour.capacity}"></td>
 							<td th:text="${tour.cost}"></td>
 							<td>
-								<a class="btn btn-sm btn-danger d-inline">Book</a>
-								<a class="btn btn-sm btn-info d-inline">Follow</a>
+								<a class="btn btn-sm btn-danger d-inline" th:href="@{/tours/{id}(id=${tour.id})}">Book</a>
+								<a class="btn btn-sm btn-info d-inline" th:href="@{/tours/{id}(id=${tour.id})}">Follow</a>
 							</td>
 						</tr>
 					</tbody>

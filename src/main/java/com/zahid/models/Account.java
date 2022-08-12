@@ -1,11 +1,17 @@
 package com.zahid.models;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +29,14 @@ public class Account {
     private String password;
     private String firstName;
     private String lastName;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "account_role", 
+        joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "role_name", referencedColumnName = "name")}
+    )
+    private Set<Role> roles = new HashSet<>();
 
     
     public Account(String email, String password, String firstName, String lastName) {

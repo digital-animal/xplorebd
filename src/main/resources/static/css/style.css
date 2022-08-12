@@ -9,6 +9,7 @@
 	display: grid;
 
 	grid-template-rows: 150px 1fr 210px; /* header main footer */
+	grid-template-columns: 1fr;
 	grid-gap: 30px;
 
 }
