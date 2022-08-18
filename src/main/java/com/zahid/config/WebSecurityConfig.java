@@ -55,13 +55,13 @@ public class WebSecurityConfig {
         return http.build();
     }
 
+    // @Bean
+    // public PasswordEncoder getPasswordEncoder() {
+    //     return NoOpPasswordEncoder.getInstance();
+    // }
+
     @Bean
     public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
-
-    // @Bean
-    // public BCryptPasswordEncoder getPasswordEncoder() {
-    //     return new BCryptPasswordEncoder();
-    // }
 }

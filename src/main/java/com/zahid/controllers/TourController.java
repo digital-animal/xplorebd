@@ -56,23 +56,14 @@ public class TourController {
         modelAndView.addObject("tour", tour);
         return modelAndView;
     }
-    
-    // @GetMapping("/tours/new")
-    // public String tourCreationForm(Model model) {
-    //     logger.debug("request to GET a new tour creation form");
-    //     Tour tour = new Tour();
-    //     model.addAttribute("tour", tour);
-    //     return "tour_new";
-    // }
 
     @PostMapping("/tours/new")
     public String addTour(@ModelAttribute Tour tour) {
         tourService.addTour(tour);
         logger.info("Tour Created");
 
-        return "redirect:/";
+        return "index";
     }
-
 
     @PutMapping("tours/{id}")
     public void updateTour(@RequestBody Tour tour, @PathVariable Long id) {

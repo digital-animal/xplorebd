@@ -25,7 +25,7 @@ public class ProfileController {
 
     @GetMapping("/profile")
     public ModelAndView getProfile() {
-        logger.debug("request to GET tour list");
+        logger.debug("request to GET profile page");
  
         ModelAndView modelAndView = new ModelAndView("profile");
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

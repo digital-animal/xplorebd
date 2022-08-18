@@ -48,9 +48,11 @@ mysql> FLUSH PRIVILEGES;
 
 # creating databases
 mysql> CREATE DATABASE xplorebd;
+mysql> show databases;
 
 # using databases
 mysql> USE xplorebd;
+mysql> show tables;
 
 # login as user 'admin'
 sudo mysql -u admin -p
@@ -59,3 +61,12 @@ My7Pass@Word_9_8A_zE
 # login as user 'zahid'
 mysql -u zahid -p
 P@s$w0rd123!
+
+# clever-cloud.com [10 MB]
+Host: mysql://uwm9xy3sqiefzjtd:oYr7obBKsDBrNzBjHc3g@b6bogyw2rgyvdojbxxhv-mysql.services.clever-cloud.com:3306/b6bogyw2rgyvdojbxxhv
+Database Name: b6bogyw2rgyvdojbxxhv
+User: uwm9xy3sqiefzjtd
+Password: oYr7obBKsDBrNzBjHc3g
+Port: 3306
+Connection URI: mysql://uwm9xy3sqiefzjtd:oYr7obBKsDBrNzBjHc3g@b6bogyw2rgyvdojbxxhv-mysql.services.clever-cloud.com:3306/b6bogyw2rgyvdojbxxhv
+MySQL CLI: mysql -h b6bogyw2rgyvdojbxxhv-mysql.services.clever-cloud.com -P 3306 -u uwm9xy3sqiefzjtd -p b6bogyw2rgyvdojbxxhv

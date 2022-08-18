@@ -33,6 +33,6 @@ public class RegisterController {
         
         System.out.println(account);
         logger.info("Account Created");
-        return "redirect:/";
+        return "login";
     }
 }

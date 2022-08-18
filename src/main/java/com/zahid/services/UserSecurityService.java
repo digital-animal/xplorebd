@@ -45,6 +45,7 @@ public class UserSecurityService implements UserDetailsService {
                                 .password(account.getPassword())
                                 .authorities(grandtedAuthorities).build();
         return user;
+
     }
     
 }

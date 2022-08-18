@@ -16,9 +16,9 @@ import com.zahid.services.AccountService;
 import com.zahid.services.RoleService;
 
 @Component
-public class Seeder implements CommandLineRunner {
+public class AccountDataLoader implements CommandLineRunner {
     
-    private final Logger logger = LoggerFactory.getLogger(Seeder.class);
+    private final Logger logger = LoggerFactory.getLogger(AccountDataLoader.class);
     @Autowired
     private AccountService accountService;
 
@@ -54,11 +54,11 @@ public class Seeder implements CommandLineRunner {
             Account account4 = new Account("john.doe@email.com", "1234", "John", "Doe");
             Account account5 = new Account("anna.smith@email.com", "1234", "Anna", "Smith");
             
-            account1.setRoles(minRoles);
-            account2.setRoles(minRoles);
+            account1.setRoles(maxRoles);
+            account2.setRoles(maxRoles);
             account3.setRoles(maxRoles);
             account4.setRoles(minRoles);
-            account4.setRoles(maxRoles);
+            account5.setRoles(minRoles);
 
             accountService.addAccount(account1);
             accountService.addAccount(account2);

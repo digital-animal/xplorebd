@@ -30,6 +30,8 @@ public class AccountService {
     }
     
     public void addAccount(Account account) {
+        if(accountRepository.findByEmail(account.getEmail()) != null) return;
+
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         accountRepository.save(account);
     }

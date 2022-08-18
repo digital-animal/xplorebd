@@ -12,12 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name="account",uniqueConstraints=@UniqueConstraint(columnNames={"id","email"}))
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,6 +32,7 @@ public class Account {
     private String password;
     private String firstName;
     private String lastName;
+    private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -38,7 +42,6 @@ public class Account {
     )
     private Set<Role> roles = new HashSet<>();
 
-    
     public Account(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
