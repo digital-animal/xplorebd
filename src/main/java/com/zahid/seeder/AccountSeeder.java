@@ -45,6 +45,7 @@ public class AccountSeeder implements CommandLineRunner {
         loadSeedData();
     }
 
+    // loadingb seeded data from csv file hosted in github
     public void loadSeedData() throws IOException, InterruptedException {
         List<Account> newData = new ArrayList<>(); // concurrency issue resolving
         HttpClient client = HttpClient.newHttpClient();
