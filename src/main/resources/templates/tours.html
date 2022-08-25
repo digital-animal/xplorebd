@@ -5,38 +5,41 @@
 <body class="container parent">
     <div th:replace="../fragments/navbar">This content will be gone</div>
 
-    <div class="container">
-      <h1 class="display-6 text-success">Tour List</h1>
-      <hr>
-      <table class="shadow-sm table table-striped table-bordered table-hover">
-        <thead class="table-dark">
-          <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Capacity</th>
-            <th>Cost</th>
-            <th>Options</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="tour: ${tours}">
-            <td th:text="${tour.id}"></td>
-            <td th:text="${tour.title}"></td>
-            <td th:text="${tour.description}"></td>
-            <td th:text="${tour.startDate}"></td>
-            <td th:text="${tour.endDate}"></td>
-            <td th:text="${tour.capacity}"></td>
-            <td th:text="${tour.cost}"></td>
-            <td>
-              <a class="btn btn-sm btn-danger d-inline" th:href="@{/tours/{id}(id=${tour.id})}">Book</a>
-              <a class="btn btn-sm btn-info d-inline" th:href="@{/tours/{id}(id=${tour.id})}">Follow</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="row">
+      <div class="col col-md">
+        <h1 class="display-6 text-success">Tour List</h1>
+        <hr>
+        <table class="shadow-sm table table-striped table-bordered table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Capacity</th>
+              <th>Cost</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="tour: ${tours}">
+              <td th:text="${tour.id}"></td>
+              <td th:text="${tour.title}"></td>
+              <td th:text="${tour.description}"></td>
+              <td th:text="${tour.startDate}"></td>
+              <td th:text="${tour.endDate}"></td>
+              <td th:text="${tour.capacity}"></td>
+              <td th:text="${tour.cost}"></td>
+              <td>
+                <a class="btn btn-sm btn-danger d-inline" th:href="@{/tours/{id}(id=${tour.id})}">Book</a>
+                <a class="btn btn-sm btn-info d-inline" th:href="@{/tours/{id}(id=${tour.id})}">Follow</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
 
     
