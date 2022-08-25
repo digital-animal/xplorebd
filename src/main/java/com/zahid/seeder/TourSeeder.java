@@ -1,4 +1,4 @@
-package com.zahid.config;
+package com.zahid.seeder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +10,9 @@ import com.zahid.models.Tour;
 import com.zahid.repositories.TourRepository;
 
 @Component
-public class TourDataLoader implements CommandLineRunner {
+public class TourSeeder implements CommandLineRunner {
 
-    private final Logger logger = LoggerFactory.getLogger(TourDataLoader.class);
+    private final Logger logger = LoggerFactory.getLogger(TourSeeder.class);
 
     @Autowired
     TourRepository tourRepository;

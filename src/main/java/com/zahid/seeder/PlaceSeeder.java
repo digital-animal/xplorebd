@@ -1,4 +1,4 @@
-package com.zahid.config;
+package com.zahid.seeder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +10,9 @@ import com.zahid.models.Place;
 import com.zahid.repositories.PlaceRepository;
 
 @Component
-public class PlaceDataLoader implements CommandLineRunner {
+public class PlaceSeeder implements CommandLineRunner {
 
-    private final Logger logger = LoggerFactory.getLogger(PlaceDataLoader.class);
+    private final Logger logger = LoggerFactory.getLogger(PlaceSeeder.class);
 
     @Autowired
     PlaceRepository placeRepository;
