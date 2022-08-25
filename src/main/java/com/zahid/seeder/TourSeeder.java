@@ -29,7 +29,7 @@ import com.zahid.services.RoleService;
 import com.zahid.services.TourService;
 
 @Component
-public class TourSeeder {
+public class TourSeeder implements CommandLineRunner {
     private static String DATA_URL = "https://raw.githubusercontent.com/digital-animal/xplorebd-files/main/tours.csv";
     private List<Tour> allData = new ArrayList<>();
 
@@ -38,13 +38,11 @@ public class TourSeeder {
     @Autowired
     private TourService tourService;
 
-    @Autowired
-    private RoleService roleService;
-
     @Override
     public void run(String... args) throws Exception {
         loadSeedData();
     }
+
     // loading seeded data from csv file hosted in github
     public void loadSeedData() throws IOException, InterruptedException {
         List<Tour> newData = new ArrayList<>(); // concurrency issue resolving
@@ -65,26 +63,12 @@ public class TourSeeder {
         
         if(tours.size() == 0) {
 
-            Role user = new Role("ROLE_USER");
-            Role admin = new Role("ROLE_ADMIN");
-
-            roleService.addRole(user);
-            roleService.addRole(admin);
-
-            Set<Role> minRoles = new HashSet<>();
-            minRoles.add(user);
-            Set<Role> maxRoles = new HashSet<>();
-            maxRoles.add(user);
-            maxRoles.add(admin);
-
-            int n = 0;
-
             for (CSVRecord record : records) {
                 // Province/State,Country/Region,Lat,Long
-                String title = record.get("Email");
+                String title = record.get("Title");
                 String description = record.get("Description");
-                String startDate = record.get("StartDate");
-                String endDate = record.get("EndDate");
+                String startDate = record.get("Start Date");
+                String endDate = record.get("End Date");
                 Integer capacity = Integer.parseInt(record.get("Capacity"));
                 Double cost = Double.parseDouble(record.get("Cost"));
                 //Account account = new Account(email, password, firstName, lastName);
@@ -94,8 +78,6 @@ public class TourSeeder {
                 //accountService.addAccount(account);
                 tourService.addTour(tour);
 
-                n++;
- 
             }
             
             logger.info("Number of tours : {}", tourService.getAllTours().size());
