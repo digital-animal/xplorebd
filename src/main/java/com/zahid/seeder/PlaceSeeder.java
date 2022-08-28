@@ -30,8 +30,6 @@ public class PlaceSeeder implements CommandLineRunner{
     private static String DATA_URL = "https://raw.githubusercontent.com/digital-animal/xplorebd-files/main/places.csv";
     private List<Tour> allData = new ArrayList<>();
 
-    private static String DATA_URL = "https://raw.githubusercontent.com/digital-animal/xplorebd-files/main/places.csv";
-
     private final Logger logger = LoggerFactory.getLogger(PlaceSeeder.class);
     
     @Autowired
