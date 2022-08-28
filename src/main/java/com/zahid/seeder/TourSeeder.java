@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.io.IOException;
-import java.io.StringReader;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -21,15 +20,12 @@ import org.springframework.stereotype.Component;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import com.zahid.models.Account;
-import com.zahid.models.Role;
 import com.zahid.models.Tour;
-import com.zahid.services.AccountService;
 import com.zahid.services.RoleService;
 import com.zahid.services.TourService;
 
 @Component
-public class TourSeeder {
+public class TourSeeder implements CommandLineRunner {
     private static String DATA_URL = "https://raw.githubusercontent.com/digital-animal/xplorebd-files/main/tours.csv";
     private List<Tour> allData = new ArrayList<>();
 
@@ -65,20 +61,6 @@ public class TourSeeder {
         
         if(tours.size() == 0) {
 
-            Role user = new Role("ROLE_USER");
-            Role admin = new Role("ROLE_ADMIN");
-
-            roleService.addRole(user);
-            roleService.addRole(admin);
-
-            Set<Role> minRoles = new HashSet<>();
-            minRoles.add(user);
-            Set<Role> maxRoles = new HashSet<>();
-            maxRoles.add(user);
-            maxRoles.add(admin);
-
-            int n = 0;
-
             for (CSVRecord record : records) {
                 // Province/State,Country/Region,Lat,Long
                 String title = record.get("Email");
@@ -87,14 +69,9 @@ public class TourSeeder {
                 String endDate = record.get("EndDate");
                 Integer capacity = Integer.parseInt(record.get("Capacity"));
                 Double cost = Double.parseDouble(record.get("Cost"));
-                //Account account = new Account(email, password, firstName, lastName);
                 Tour tour = new Tour(title,description,startDate,endDate,capacity,cost);
                 
-                
-                //accountService.addAccount(account);
                 tourService.addTour(tour);
-
-                n++;
  
             }
             
