@@ -21,13 +21,11 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
 import com.zahid.models.Tour;
-import com.zahid.services.RoleService;
 import com.zahid.services.TourService;
 
 @Component
 public class TourSeeder implements CommandLineRunner {
     private static String DATA_URL = "https://raw.githubusercontent.com/digital-animal/xplorebd-files/main/tours.csv";
-    private List<Tour> allData = new ArrayList<>();
 
     private final Logger logger = LoggerFactory.getLogger(TourSeeder.class);
     
@@ -41,16 +39,10 @@ public class TourSeeder implements CommandLineRunner {
 
     // loading seeded data from csv file hosted in github
     public void loadSeedData() throws IOException, InterruptedException {
-        List<Tour> newData = new ArrayList<>(); // concurrency issue resolving
+
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(DATA_URL)).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        // System.out.println(response.body());
-        
-        // StringReader csvBodyReader = new StringReader(response.body());
-        // CSVFormat format = CSVFormat.DEFAULT.builder().setSkipHeaderRecord(true).build();
-        // CSVParser csvParser = new CSVParser(csvBodyReader, format);
-        // List<CSVRecord> records = csvParser.getRecords();
         
         StringReader csvBodyReader = new StringReader(response.body());
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
