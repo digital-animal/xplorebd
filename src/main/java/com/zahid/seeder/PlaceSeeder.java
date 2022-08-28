@@ -1,42 +1,49 @@
 package com.zahid.seeder;
 
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+
 import com.zahid.models.Place;
+import com.zahid.models.Tour;
 import com.zahid.services.PlaceService;
+import com.zahid.services.RoleService;
 
 @Component
-public class PlaceSeeder implements CommandLineRunner {
+public class PlaceSeeder implements CommandLineRunner{
+    private static String DATA_URL = "https://raw.githubusercontent.com/digital-animal/xplorebd-files/main/places.csv";
+    private List<Tour> allData = new ArrayList<>();
 
     private static String DATA_URL = "https://raw.githubusercontent.com/digital-animal/xplorebd-files/main/places.csv";
 
     private final Logger logger = LoggerFactory.getLogger(PlaceSeeder.class);
-
+    
     @Autowired
-    PlaceService placeService;
+    private PlaceService placeService;
 
     @Override
     public void run(String... args) throws Exception {
         loadSeedData();
     }
-
-	private void loadSeedData() throws IOException, InterruptedException {
-        logger.info("Getting seeded data for Place model");
-
+    // loading seeded data from csv file hosted in github
+    public void loadSeedData() throws IOException, InterruptedException {
+        List<Place> newData = new ArrayList<>(); // concurrency issue resolving
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(DATA_URL)).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
