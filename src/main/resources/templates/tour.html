@@ -27,11 +27,15 @@
           <li th:text="'Capacity: ' + ${tour.capacity}">Capacity</li>
           <li th:text="'Cost: ' + ${tour.cost}">Cost</li>
         </ul>
-  
-        <a href="" class="btn btn-success">Enroll Now</a>
-        <a href="" class="btn btn-warning">Payment</a>
+
+        <!-- <a href="#" th:href="@{/tours/{id}(id=${tour.id})/enroll" class="btn btn-success">Enroll Now</a> -->
+        <a href="#" th:href="'/tours/'+${tour.id}+'/enroll'" class="btn btn-success">Enroll Now</a>
+        <a href="#" class="btn btn-warning">Payment</a>
       </div>
   
+      <h3>Logged user: <span sec:authentication="name">Bob</span></h3>
+
+
     </div>
     <!-- /.row -->
   

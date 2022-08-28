@@ -5,6 +5,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.zahid.models.Account;
 import com.zahid.models.Tour;
+import com.zahid.services.AccountService;
 import com.zahid.services.TourService;
 
 @RestController
@@ -28,6 +33,9 @@ public class TourController {
     
     @Autowired
     private TourService tourService;
+
+    @Autowired
+    private AccountService accountService;
 
     @GetMapping("/tours")
     public ModelAndView getAllTours() {
@@ -51,17 +59,18 @@ public class TourController {
     public ModelAndView tourCreationForm() {
         logger.debug("request to GET a new tour creation form");
         Tour tour = new Tour();
-        ModelAndView modelAndView = new ModelAndView("tour_new");
+        ModelAndView modelAndView = new ModelAndView("tour-add");
         modelAndView.addObject("tour", tour);
         return modelAndView;
     }
 
     @PostMapping("/tours/new")
-    public String addTour(@ModelAttribute Tour tour) {
+    public ModelAndView addTour(@ModelAttribute Tour tour) {
         tourService.addTour(tour);
         logger.info("Tour Created");
+        ModelAndView modelAndView = new ModelAndView("tour-add-success");
 
-        return "index";
+        return modelAndView;
     }
 
     @PutMapping("tours/{id}")
@@ -78,6 +87,32 @@ public class TourController {
     public void deleteAllTours(@PathVariable Long id) {
         tourService.deleteAllTours();
     }
+    
+    @GetMapping("tours/{id}/enroll")
+    public ModelAndView enroll(@PathVariable String id) {
+        logger.debug("request to GET a new tour enroll");
 
+        Tour tour = tourService.getTour(Long.parseLong(id));
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
+        String username;
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+        // username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        Account account = accountService.getAccountByEmail(username);
+
+        logger.info("Username : ", username);
+
+        tour.getAccounts().add(account);
+        tourService.updateTour(tour, tour.getId());
+
+        ModelAndView modelAndView = new ModelAndView("tour");
+        modelAndView.addObject("tour", tour);
+        return modelAndView;
+    }
 
 }

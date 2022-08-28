@@ -11,79 +11,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<div th:replace="../fragments/navbar">This content will be gone</div>
 
 	<main class="main">
-		<div class="input-group">
-			<form action="#" 
-				  th:action="@{/search}"
-				  class="form form-group form-outline w-100 mb-4" 
-				  method="get">
-				  <input type="text" name="keyword" th:value="${keyword}"  placeholder="Search tour, place etc." class="px-2 py-1">
-				  <button type="submit" class="btn btn-outline-success" >Search</button>
-				  <button type="submit" class="btn btn-outline-success" >Reset</button>
-			</form>
-	  
-
-		</div>
-
 		<section class="main-section">
-			
-			<section class="block-1">
-				<div class="block-1-title">
-					<h4><span>Featured</span></h4>
-				</div>
-				
-				<div class="block-1a">
-					<div class="block-1a-content">
-						<img src="../images/monsoon.jpg" th:src="@{images/monsoon.jpg}">
-					</div>
-					<div class="block-1a-headline">
-						<h3>Trekking in Ruma and Thanchi, Bandarban, Sept 21-24</h3>
-					</div>
-				</div>
-				<div class="block-1b">
-					<div class="block-1b-content">
-						<img src="../images/bogalake.jpg" th:src="@{images/bogalake.jpg}">
-					</div>
-					<div class="block-1b-headline">
-						<p>Hiking Bogalake, Bandarban, October 12-14</p>
-					</div>
-				</div>
-				<div class="block-1c">
-					<div class="block-1c-content">
-						<img src="../images/kaptai-1.jpg"  th:src="@{images/kaptai-1.jpg}">
-					</div>
-					<div class="block-1c-headline">
-						<p>Boat Trip in Kaptai Lake, Rangamati. August 05-07</p>
-					</div>
-				</div>
-				
-				<div class="block-1d">
-					<div class="block-1d-content">
-						<img src="../images/tlabongbypiash.jpg" th:src="@{images/tlabongbypiash.jpg}">
-					</div>
-					<div class="block-1d-headline">
-						<p>Exploring Tlabong Waterfall, Ruma, Bandarban. July 24-28</p>
-					</div>
-					
-				</div>
-				<div class="block-1e">
-					<div class="block-1e-content">
-						<img src="../images/sundarban.jpg" th:src="@{images/sundarban.jpg}">
-					</div>
-					<div class="block-1e-headline">
-						<p>Sundarban Safari, Bagerhat, November 08-12</p>
-					</div>
-				</div>
-				<div class="block-1f">
-					<div class="block-1f-content">
-						<img src="../images/teknaf.jpeg" th:src="@{images/teknaf.jpg}">
-					</div>
-					<div class="block-1f-headline">
-						<p>Teknaf Beach Hiking, Cox's Bazar, July 18-22</p>
-					</div>
-				</div>
-				
-				
-			</section>
 
 			<section class="block-2">
 				<div class="block-2-title">
@@ -123,7 +51,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			
 			</section>
 
-			<section>
+			<section class="block-2">
 				<div class="block-2-title">
 					<h4><span>Place List</span></h4>
 				</div>

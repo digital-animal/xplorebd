@@ -1,5 +1,7 @@
 package com.zahid.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class Place {
+public class Place implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter

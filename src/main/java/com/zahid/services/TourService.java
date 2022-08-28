@@ -20,6 +20,12 @@ public class TourService {
         return tourList;
     }
 
+    public List<Tour> getByKeyword(String keyword) {
+        List<Tour> tourList = new ArrayList<>();
+        tourRepository.findByTitle(keyword).forEach(tourList::add);
+        return tourList;
+    }
+
 	public Tour getTour(Long id) {
 		return tourRepository.findById(id).get();
 	}

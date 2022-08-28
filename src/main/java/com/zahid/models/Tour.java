@@ -1,15 +1,23 @@
 package com.zahid.models;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class Tour {
+public class Tour implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
@@ -43,7 +51,31 @@ public class Tour {
     @Getter
     @Setter
     private String image;
-    
+
+    // one tour can have many place
+    // one place can have many tour
+    @Getter
+    @Setter
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "tour_place", 
+        joinColumns = {@JoinColumn(name = "tour_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "place_id", referencedColumnName = "id")}
+        )
+    private Set<Place> places = new HashSet<>();
+
+
+    // one tour can have many account
+    // one account can have many tour
+    @Getter
+    @Setter
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "tour_account", 
+        joinColumns = {@JoinColumn(name = "tour_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "id")}
+    )
+    private Set<Account> accounts = new HashSet<>();
 
     public Tour() {
     }

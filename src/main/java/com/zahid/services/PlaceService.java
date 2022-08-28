@@ -20,6 +20,12 @@ public class PlaceService {
         return placeList;
     }
 
+    public List<Place> getByKeyword(String keyword) {
+        List<Place> placeList = new ArrayList<>();
+        placeRepository.findByName(keyword).forEach(placeList::add);
+        return placeList;
+    }
+
 	public Place getPlace(Long id) {
 		return placeRepository.findById(id).get();
 	}

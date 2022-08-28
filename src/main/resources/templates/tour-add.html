@@ -9,7 +9,7 @@
   <form action="#" 
         th:action="@{/tours/new}" 
         th:object="${tour}" 
-        class="mx-auto w-50 p-5 shadow bg-light rounded form-horizontal" 
+        class="mx-auto w-50 p-5 shadow bg-light rounded form-horizontal border border-success my-4" 
         method="POST">
 
     <fieldset>
@@ -54,58 +54,16 @@
         <input id="cost" name="cost" type="text" placeholder="Cost" th:field="*{cost}" class="form-control input-md">
       </div>
 
-      
-      <!-- Multiple Checkboxes -->
-      <!-- <div class="form-group">
-        <label class="col-md-4 control-label" for="checkboxes">Participation Access</label>
-        <div class="col-md-4">
-        <div class="checkbox">
-          <label for="checkboxes-0">
-            <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-            Paid
-          </label>
-          </div>
-        <div class="checkbox">
-          <label for="checkboxes-1">
-            <input type="checkbox" name="checkboxes" id="checkboxes-1" value="2">
-            Invite only
-          </label>
-        </div>
-        <div class="checkbox">
-          <label for="checkboxes-2">
-            <input type="checkbox" name="checkboxes" id="checkboxes-2" value="3">
-            Open
-          </label>
-        </div>
-        </div>
-      </div> -->
-      
-      <!-- Select Basic -->
-      <!-- <div class="form-group">
-        <label class="col-md-4 control-label" for="selectbasic">Payment Method</label>
-        <div class="col-md-4">
-          <select id="selectbasic" name="selectbasic" class="form-control">
-            <option value="1">In advance</option>
-            <option value="2">At door</option>
-            <option value="3">Both</option>
-          </select>
-        </div>
-      </div> -->
-    
     </fieldset>
 
     <div class="form-group mb-4">
-      <button type="submit" class="btn btn-sm btn-danger btn-block form-control">Create</button>
+      <button type="submit" class="btn btn-sm btn-success btn-block form-control">Create</button>
     </div>
   </form>
     
 
 </div>
 <!-- /.container -->
-
-
-
-
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>

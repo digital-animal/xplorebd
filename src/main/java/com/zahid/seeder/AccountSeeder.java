@@ -51,12 +51,7 @@ public class AccountSeeder implements CommandLineRunner {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(DATA_URL)).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        // System.out.println(response.body());
-        
-        // StringReader csvBodyReader = new StringReader(response.body());
-        // CSVFormat format = CSVFormat.DEFAULT.builder().setSkipHeaderRecord(true).build();
-        // CSVParser csvParser = new CSVParser(csvBodyReader, format);
-        // List<CSVRecord> records = csvParser.getRecords();
+
         
         StringReader csvBodyReader = new StringReader(response.body());
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
@@ -87,7 +82,7 @@ public class AccountSeeder implements CommandLineRunner {
                 String lastName = record.get("Last Name");
                 Account account = new Account(email, password, firstName, lastName);
                 
-                if (n % 2 == 0) {
+                if (n % 2 == 1) {
                     // account.setRoles(minRoles);
                     account.setRole(user);
                 } else {

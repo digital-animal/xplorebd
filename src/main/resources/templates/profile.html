@@ -57,8 +57,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                     <h6 class="mb-0">Role</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <span th:if="${account.role.name = 'ROLE_ADMIN'}">Admin</span>
-                    <span th:unless="${account.role.name = 'ROLE_USER'}">User</span>
+
+                    <span sec:authorize="hasRole('ROLE_ADMIN')">Admin</span>
+                    <span sec:authorize="hasRole('ROLE_USER')">User</span>
                   </div>
                 </div>
                 <hr>

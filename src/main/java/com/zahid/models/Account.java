@@ -1,5 +1,6 @@
 package com.zahid.models;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,7 +26,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Account {
+public class Account implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id; // reference column name in post same as this
@@ -37,14 +38,6 @@ public class Account {
 
     @ManyToOne
     private Role role; // for choices
-
-    // @ManyToMany(fetch = FetchType.EAGER)
-    // @JoinTable(
-    //     name = "account_role", 
-    //     joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "id")},
-    //     inverseJoinColumns = {@JoinColumn(name = "role_name", referencedColumnName = "name")}
-    // )
-    // private Set<Role> roles = new HashSet<>();
 
     public Account(String email, String password, String firstName, String lastName) {
         this.email = email;
