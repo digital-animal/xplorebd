@@ -22,7 +22,6 @@ public class WebSecurityConfig {
         "/places/list",
         "/tours/list",
         "/register/**",
-        "/h2/**",
         "/css/**",
         "/js/**",
         "/images/**",
@@ -40,7 +39,7 @@ public class WebSecurityConfig {
             .usernameParameter("email")
             .passwordParameter("password")
             .defaultSuccessUrl("/", true)
-            .failureUrl("/login?error")
+            .failureUrl("/error")
             .permitAll()
             .and()
             .logout()

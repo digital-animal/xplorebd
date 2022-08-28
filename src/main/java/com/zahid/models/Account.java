@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -32,15 +33,18 @@ public class Account {
     private String password;
     private String firstName;
     private String lastName;
-    private boolean enabled;
+    private String chips; // for choices
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "account_role", 
-        joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "id")},
-        inverseJoinColumns = {@JoinColumn(name = "role_name", referencedColumnName = "name")}
-    )
-    private Set<Role> roles = new HashSet<>();
+    @ManyToOne
+    private Role role; // for choices
+
+    // @ManyToMany(fetch = FetchType.EAGER)
+    // @JoinTable(
+    //     name = "account_role", 
+    //     joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "id")},
+    //     inverseJoinColumns = {@JoinColumn(name = "role_name", referencedColumnName = "name")}
+    // )
+    // private Set<Role> roles = new HashSet<>();
 
     public Account(String email, String password, String firstName, String lastName) {
         this.email = email;

@@ -88,9 +88,10 @@ public class AccountSeeder implements CommandLineRunner {
                 Account account = new Account(email, password, firstName, lastName);
                 
                 if (n % 2 == 0) {
-                    account.setRoles(minRoles);
+                    // account.setRoles(minRoles);
+                    account.setRole(user);
                 } else {
-                    account.setRoles(maxRoles);
+                    account.setRole(admin);
                 }
                 accountService.addAccount(account);
 

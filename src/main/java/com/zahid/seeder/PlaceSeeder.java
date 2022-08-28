@@ -1,5 +1,15 @@
 package com.zahid.seeder;
 
+import java.io.IOException;
+import java.io.StringReader;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.List;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,44 +17,52 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.zahid.models.Place;
-import com.zahid.repositories.PlaceRepository;
+import com.zahid.services.PlaceService;
 
 @Component
 public class PlaceSeeder implements CommandLineRunner {
 
+    private static String DATA_URL = "https://raw.githubusercontent.com/digital-animal/xplorebd-files/main/places.csv";
+
     private final Logger logger = LoggerFactory.getLogger(PlaceSeeder.class);
 
     @Autowired
-    PlaceRepository placeRepository;
+    PlaceService placeService;
 
     @Override
     public void run(String... args) throws Exception {
         loadSeedData();
     }
 
-	private void loadSeedData() {
+	private void loadSeedData() throws IOException, InterruptedException {
         logger.info("Getting seeded data for Place model");
 
-        if(placeRepository.count() == 0) {
-            Place p1 = new Place("Inani Sea Beach", "Sea Beach", "Cox's Bazar");
-            Place p2 = new Place("Nilgiri", "Hill Station", "Bandarban");
-            Place p3 = new Place("Kaptai Lake", "Lake", "Rangamati");
-            Place p4 = new Place("Sajek", "Hill Station", "Rangamati");
-            Place p5 = new Place("Tea Garden", "Hill Station", "Sylhet");
-            Place p6 = new Place("Sundarban", "Forest", "Bagerhat");
-            Place p7 = new Place("Patenga", "Sea Beach", "Chittagong");
-            Place p8 = new Place("Keokradong", "Mountain", "Bandarban");
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(DATA_URL)).build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            placeRepository.save(p1);
-            placeRepository.save(p2);
-            placeRepository.save(p3);
-            placeRepository.save(p4);
-            placeRepository.save(p5);
-            placeRepository.save(p6);
-            placeRepository.save(p7);
-            placeRepository.save(p8);
+        StringReader csvBodyReader = new StringReader(response.body());
+        Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
+
+        List<Place> places = placeService.getAllPlaces();
+        
+        if(places.size() == 0) {
+            
+            for (CSVRecord record : records) {
+                // Province/State,Country/Region,Lat,Long
+                String name = record.get("Name");
+                String type = record.get("Type");
+                String location = record.get("Location");
+                String image = record.get("Image");
+
+                Place place = new Place(name, type, location);
+                place.setImage(image);
+                
+                placeService.addPlace(place);
+            }
+            
       
         }
 	}
-    
+
 }

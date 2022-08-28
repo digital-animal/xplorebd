@@ -71,8 +71,10 @@ public class TourSeeder implements CommandLineRunner {
                 String endDate = record.get("End Date");
                 Integer capacity = Integer.parseInt(record.get("Capacity"));
                 Double cost = Double.parseDouble(record.get("Cost"));
+                String image = record.get("Image");
                 //Account account = new Account(email, password, firstName, lastName);
                 Tour tour = new Tour(title,description,startDate,endDate,capacity,cost);
+                tour.setImage(image);
                 
                 
                 //accountService.addAccount(account);

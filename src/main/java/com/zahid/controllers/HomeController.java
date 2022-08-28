@@ -35,22 +35,22 @@ public class HomeController {
     @GetMapping("/tours/list") 
     public ModelAndView index() {
         logger.debug("request to GET list");
-        ModelAndView modelAndView = new ModelAndView("tour_list");
+        ModelAndView modelAndView = new ModelAndView("tours");
         
         modelAndView.addObject("tours", tourService.getAllTours());
         
         return modelAndView;
     }
         
-    @GetMapping("/places/list") 
-    public ModelAndView places() {
-        logger.debug("request to GET list");
-        ModelAndView modelAndView = new ModelAndView("place_list");
+    // @GetMapping("/places/list") 
+    // public ModelAndView places() {
+    //     logger.debug("request to GET list");
+    //     ModelAndView modelAndView = new ModelAndView("places");
         
-        modelAndView.addObject("places", placeService.getAllPlaces());
+    //     modelAndView.addObject("places", placeService.getAllPlaces());
         
-        return modelAndView;
-    }
+    //     return modelAndView;
+    // }
     
     @GetMapping("/user")
     public String user(Model model) {

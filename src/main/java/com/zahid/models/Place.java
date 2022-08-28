@@ -28,6 +28,10 @@ public class Place {
     @Setter
     private String location;
     
+    @Getter
+    @Setter
+    private String image;
+    
 
     public Place() {
     }
