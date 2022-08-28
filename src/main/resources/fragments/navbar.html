@@ -57,6 +57,9 @@
 				<li sec:authorize="hasRole('ROLE_ADMIN')" class="bg-warning">
 					<a href="#" th:href="@{/tours/new}">New Tour</a>
 				</li>
+				<li sec:authorize="hasRole('ROLE_ADMIN')" class="bg-info">
+					<a href="#" th:href="@{/places/add}">Add Place</a>
+				</li>
 				<li sec:authorize="isAnonymous()" class="bg-dark">
 					<a href="#" th:href="@{/login}">Login</a>
 				</li>

@@ -29,11 +29,12 @@ public class AccountService {
         return accountRepository.findById(id).get();
     }
     
-    public void addAccount(Account account) {
-        if(accountRepository.findByEmail(account.getEmail()) != null) return;
+    public boolean addAccount(Account account) {
+        if(accountRepository.findByEmail(account.getEmail()) != null) return false;
 
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         accountRepository.save(account);
+        return true;
     }
 
     public void updateAccount(Account account) {

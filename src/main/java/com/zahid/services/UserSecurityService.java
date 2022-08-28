@@ -1,5 +1,6 @@
 package com.zahid.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,10 +35,14 @@ public class UserSecurityService implements UserDetailsService {
             throw new UsernameNotFoundException("Account not found");
         }
 
-        List<GrantedAuthority> grandtedAuthorities = account.getRoles()
-                                                            .stream()
-                                                            .map(role -> new SimpleGrantedAuthority(role.getName()))
-                                                            .collect(Collectors.toList());
+        // List<GrantedAuthority> grandtedAuthorities = account.getRole()
+        //                                                     .stream()
+        //                                                     .map(role -> new SimpleGrantedAuthority(role.getName()))
+        //                                                     .collect(Collectors.toList());
+
+        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(account.getRole().getName());
+        List<GrantedAuthority> grandtedAuthorities = new ArrayList<>();
+        grandtedAuthorities.add(grantedAuthority);
         // return new User(account.getEmail(), account.getPassword(), grandtedAuthorities);
                                                             
                                                             

@@ -40,6 +40,10 @@ public class Tour {
     @Setter
     private Double cost;
     
+    @Getter
+    @Setter
+    private String image;
+    
 
     public Tour() {
     }

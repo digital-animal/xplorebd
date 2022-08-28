@@ -38,7 +38,6 @@ public class TourController {
         
         return modelAndView;
     }
-        
 
     @GetMapping("/tours/{id}")
     public ModelAndView getTour(@PathVariable Long id) {
