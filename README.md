@@ -3,7 +3,7 @@
     Project Name - EXPLORE BANGLADESH
 
 
-## tour demonstration video url
+## project demonstration video url
 
     - https://drive.google.com/file/d/1dLuwr59uUkT5YJzJxaMmUUVQHgUuuSBg/view?usp=sharing
 
