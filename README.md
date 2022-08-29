@@ -2,6 +2,11 @@
 
     Project Name - EXPLORE BANGLADESH
 
+
+## tour demonstration video url
+
+    - https://drive.google.com/file/d/1dLuwr59uUkT5YJzJxaMmUUVQHgUuuSBg/view?usp=sharing
+
 ## frameworks and tools used
 
     - Backend
@@ -16,13 +21,21 @@
     - Database
         - MySQL
 
+## project intro presentation
+
+    - https://docs.google.com/presentation/d/1TaOwHMjIMG9a9SC9qnaHMUJEnD8rxZ_-2XoX7uj2LuA/edit?usp=sharing
+
 ## mockui link
     
-    -
+    - https://docs.google.com/presentation/d/1MyagvYjJ3x6GckQBS_1mEDIxnBzBxgJm94OVIjFR504/edit?usp=sharing
 
 ## entity relationship diagram link
 
+    - https://drive.google.com/file/d/17kvKcsaBvpnZW3t2870zkJHnzWS0STRk/view?usp=sharing
+
 ## class diagram link
+
+    - https://drive.google.com/file/d/1UGkmkzdAxoIavtaIO_BYK2Opzt71eN2E/view?usp=sharing
 
 ## run the following command on terminal to check java version
 
@@ -70,7 +83,3 @@
 
     - Blog (Tour Library)
     - Hotels/Restaurants
-
-## tour demonstration video url
-
-    -
