@@ -1,4 +1,28 @@
-# commands to run the application
+# Instruction to run the application
+
+    Project Name - EXPLORE BANGLADESH
+
+## frameworks and tools used
+
+    - Backend
+        - SpringBoot
+        - Spring Data JPA
+        - Spring Security
+    
+    - Frontend
+        - HTML, CSS
+        - Thymeleaf (Template Engine)
+    
+    - Database
+        - MySQL
+
+## mockui link
+    
+    -
+
+## entity relationship diagram link
+
+## class diagram link
 
 ## run the following command on terminal to check java version
 
@@ -6,7 +30,19 @@
 
 ## change java version in pom.xml accordingly
 
-    <java.version>java-version-on-system</java.version>
+    <java.version>{java-version-on-system}</java.version>
+
+## create a MySQL database connection with the following required credentials
+
+    Connection Name: xplorebd
+    Username: {your-username}
+    Password: {your-password}
+
+## browse to application.properties and edit the following fields with proper credentials
+
+    spring.datasource.url=jdbc:mysql://localhost:3306/xplorebd
+    spring.datasource.username={your-user-name}
+    spring.datasource.password={your-password}
 
 ## if maven installed on system then run the following command
 
@@ -24,15 +60,17 @@
 
     localhost:8080
 
-## working http urls
+## modules implemented
 
-    localhost:8080/tours
-    localhost:8080/tours/list
-    localhost:8080/tours/id
-    localhost:8080/places/
-    localhost:8080/places/list
-    localhost:8080/places/id
-    localhost:8080/login
-    localhost:8080/logout
-    localhost:8080/user
-    localhost:8080/admin
+    - Account (Profile)
+    - Tours
+    - Places
+
+## modules yet to be implemented
+
+    - Blog (Tour Library)
+    - Hotels/Restaurants
+
+## tour demonstration video url
+
+    -
